@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="임베디드~클라우드 네이티브까지 30년 Java Backend 경험. 대규모 마이그레이션·핀테크·공공SI·IoT 백엔드 아키텍트.">
+  <meta name="theme-color" content="#1a1a2e">
+  <title>최원철 | 시니어 Java Backend 엔지니어 / 테크 리드 / 기술 강사</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-primary: #1a1a2e;
+      --color-secondary: #16213e;
+      --color-accent: #2948e1;
+      --color-accent-light: #ff6b6b;
+      --color-text: #2d2d2d;
+      --color-text-light: #666666;
+      --color-border: #e0e0e0;
+      --color-bg: #fafafa;
+      --color-white: #ffffff;
+      --font-ko: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-en: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --color-primary: #e8e8f0;
+        --color-secondary: #c8c8e0;
+        --color-accent: #ff6b6b;
+        --color-accent-light: #ff9999;
+        --color-text: #e0e0e0;
+        --color-text-light: #a0a0a0;
+        --color-border: #333344;
+        --color-bg: #12121a;
+        --color-white: #1a1a2e;
+      }
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: var(--font-ko), var(--font-en);
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--color-text);
+      background: var(--color-bg);
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+    .resume-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 40px 24px;
+      background: var(--color-white);
+      box-shadow: 0 0 30px rgba(0,0,0,0.08);
+    }
+    @media (max-width: 840px) {
+      .resume-container { box-shadow: none; padding: 24px 16px; }
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--color-border);
+    }
+    .name-block h1 {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--color-primary);
+      margin: 0 0 4px 0;
+      letter-spacing: -0.5px;
+    }
+    .name-block .name-en {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--color-secondary);
+      margin-bottom: 8px;
+    }
+    .name-block .title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--color-accent);
+      margin-bottom: 4px;
+    }
+    .name-block .tagline {
+      font-size: 13px;
+      color: var(--color-text-light);
+      line-height: 1.5;
+    }
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 13px;
+      color: var(--color-text-light);
+    }
+    .contact-links a { color: inherit; text-decoration: none; }
+    .contact-links a:hover { color: var(--color-accent); }
+    .section {
+      margin-top: 36px;
+    }
+    .section-title {
+      font-size: 15px;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--color-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+      position: relative;
+    }
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 50px;
+      height: 2.5px;
+      background: var(--color-accent);
+      border-radius: 2px;
+      margin-top: 6px;
+    }
+    .subsection-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--color-secondary);
+      margin: 20px 0 8px 0;
+    }
+    .summary { font-size: 14px; line-height: 1.8; color: var(--color-text); }
+    .job { margin-top: 20px; }
+    .job-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .job-company { font-size: 15px; font-weight: 700; color: var(--color-primary); }
+    .job-positions { font-size: 13px; color: var(--color-text-light); margin-top: 2px; }
+    .job-type {
+      font-size: 11px;
+      padding: 2px 8px;
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      color: var(--color-text-light);
+      white-space: nowrap;
+    }
+    .job-period { font-size: 12px; font-weight: 500; color: var(--color-secondary); white-space: nowrap; }
+    .bullets { margin: 10px 0 0 0; padding-left: 20px; }
+    .bullets li { margin: 6px 0; line-height: 1.6; font-size: 13.5px; }
+    .bullets li::marker { color: var(--color-accent); font-weight: 700; }
+    .project {
+      margin-top: 12px;
+      padding: 12px 16px;
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: 6px;
+    }
+    .project-name { font-size: 13.5px; font-weight: 600; color: var(--color-secondary); }
+    .project-meta { font-size: 12px; color: var(--color-text-light); margin: 4px 0 6px 0; }
+    .project-detail { font-size: 13px; color: var(--color-text); line-height: 1.6; }
+    .project-tech { font-size: 11.5px; color: var(--color-text-light); margin-top: 6px; }
+    .skill-cloud { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+    .skill-tag {
+      display: inline-block;
+      padding: 5px 12px;
+      font-size: 12.5px;
+      font-weight: 500;
+      border-radius: 4px;
+      background: #f5f5f5;
+      border: 1px solid var(--color-border);
+      color: var(--color-accent);
+      transition: all 0.15s;
+    }
+    .skill-tag:hover { background: var(--color-accent); color: white; border-color: var(--color-accent); }
+    @media (prefers-color-scheme: dark) {
+      .skill-tag { background: #2a2a3a; border-color: #444455; }
+      .skill-tag:hover { background: var(--color-accent); }
+    }
+    .skill-tag .level { font-size: 10px; font-weight: 400; opacity: 0.7; margin-left: 4px; }
+    .education-item, .cert-item, .award-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 16px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+    .edu-main, .cert-main, .award-main { flex: 1; min-width: 200px; }
+    .edu-degree, .cert-name, .award-title { font-weight: 600; color: var(--color-primary); font-size: 13.5px; }
+    .edu-school, .cert-issuer, .award-issuer { font-size: 12.5px; color: var(--color-text-light); margin-top: 2px; }
+    .edu-period, .cert-date, .award-date { font-size: 12px; font-weight: 500; color: var(--color-secondary); white-space: nowrap; }
+    .download-btn {
+      display: inline-block;
+      margin-top: 28px;
+      padding: 14px 28px;
+      background: var(--color-accent);
+      color: white !important;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 14px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.1s;
+    }
+    .download-btn:hover { background: var(--color-accent-light); transform: translateY(-1px); text-decoration: none; }
+    .download-btn:active { transform: translateY(0); }
+    .footer {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid var(--color-border);
+      text-align: center;
+      font-size: 12px;
+      color: var(--color-text-light);
+    }
+    .footer a { color: var(--color-accent); text-decoration: none; }
+    .no-print { @media print { display: none !important; } }
+    .print-only { display: none; @media print { display: block !important; } }
+    @media print {
+      body { background: white; }
+      .resume-container { box-shadow: none; padding: 0; max-width: none; }
+    }
+    .lang-switcher {
+      display: inline-block;
+      margin: 0 12px;
+      color: var(--color-accent);
+      text-decoration: none;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+  <div class="resume-container">
+    <header class="header">
+      <div class="name-block">
+        <h1>최원철</h1>
+        <div class="name-en">Choi Won Cheol (崔圓哲)</div>
+        <div class="title">시니어 Java Backend 엔지니어 / 테크 리드 / 기술 강사</div>
+        <div class="tagline">임베디드~클라우드 네이티브까지 30년 Java Backend 경험. 대규모 마이그레이션·핀테크·공공SI·IoT 백엔드 아키텍트.</div>
+      </div>
+      <nav class="contact-links">
+        <span>📍 인천 미추홀구</span>
+        <a href="tel:+8201094385323">📞 +82-010-9438-5323</a>
+        <a href="mailto:sincerus@hanmail.net">✉️ sincerus@hanmail.net</a>
+        
+        
+        <a href="https://softagape.tistory.com" target="_blank">📝 Tech Blog</a>
+      </nav>
+    </header>
+
+    <section class="section">
+      <h2 class="section-title">전문 요약</h2>
+      <div class="summary">30년 경력의 Java Backend 개발자. PIC 어셈블리 임베디드 펌웨어부터 클라우드 네이티브 백엔드(AWS/GCP)까지 전 계층 경험 보유.<br>이기종 DB 마이그레이션 솔루션(EzMig) 아키텍처 설계, 홈플러스 POS CIS 프로젝트(전국 140여 매장) 리딩,<br>귀뚜라미 BEMS 국책과제·이천시청 고도화·LG 로봇 백엔드(AWS+GCP 하이브리드) 등 공공/엔터프라이즈 핵심 시스템 구축 경험 다수.<br>최근 3년간: Spring Boot/Java, Node.js, Flutter, AWS/GCP, Docker/Jenkins CI/CD 중심 기술 스택 확장 중.<br>NCS 정보기술개발 강사(2024~, HRD 95점)로 Java 백엔드 강의 병행.<br></div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">Core Competencies</h2>
+      <h3 class="subsection-title">Languages</h3>
+      <div class="skill-cloud">
+        <span class="skill-tag">Java<span class="level">Expert</span></span>
+        <span class="skill-tag">C# / .NET<span class="level">Expert</span></span>
+        <span class="skill-tag">C / C++<span class="level">Expert</span></span>
+        <span class="skill-tag">Python<span class="level">Advanced</span></span>
+        <span class="skill-tag">Flutter / Dart<span class="level">Advanced</span></span>
+        <span class="skill-tag">Node.js<span class="level">Intermediate</span></span>
+        <span class="skill-tag">JavaScript / TypeScript<span class="level">Advanced</span></span>
+        <span class="skill-tag">PHP<span class="level">Advanced</span></span>
+        <span class="skill-tag">Assembly<span class="level">Expert</span></span>
+        <span class="skill-tag">SQL<span class="level">Expert</span></span>
+      </div>
+      <h3 class="subsection-title">Frameworks & Libraries</h3>
+      <div class="skill-cloud">
+        <span class="skill-tag">Spring Boot, Spring Batch, Spring Security, Spring AI, eGovFrame</span>
+        <span class="skill-tag">ASP.NET Core, .NET Framework 4.x, DevExpress</span>
+        <span class="skill-tag">Vue.js 2/3, Node.js, jQuery, Express, Bootstrap</span>
+        <span class="skill-tag">Flutter (Riverpod, GetX), Dart</span>
+        <span class="skill-tag">Django, FastAPI</span>
+        <span class="skill-tag">iBatis, MyBatis, JPA/Hibernate</span>
+      </div>
+      <h3 class="subsection-title">DevOps / Cloud / Infra</h3>
+      <div class="skill-cloud">
+        <span class="skill-tag">Docker, Docker Compose</span>
+        <span class="skill-tag">Jenkins, GitLab CI/CD, GitHub Actions</span>
+        <span class="skill-tag">AWS: EC2, RDS, S3, Lambda</span>
+        <span class="skill-tag">GCP: Firebase, Firestore, Cloud Functions</span>
+        <span class="skill-tag">Naver Cloud, Oracle Cloud, Contabo</span>
+        <span class="skill-tag">Kubernetes Basics, Helm, Terraform Basics</span>
+        <span class="skill-tag">Git, GitHub, GitLab, Bitbucket, SVN</span>
+        <span class="skill-tag">Jira, Confluence, Notion</span>
+      </div>
+      <h3 class="subsection-title">Databases</h3>
+      <div class="skill-cloud">
+        <span class="skill-tag">Oracle, PL/SQL, PostgreSQL, MySQL/MariaDB, MSSQL (2000~2019)</span>
+        <span class="skill-tag">DB2, Tibero, Sybase IQ, SQLite</span>
+        <span class="skill-tag">ERD Modeling, Data Migration/ETL, Real-time Sync</span>
+      </div>
+      <h3 class="subsection-title">Architecture & Patterns</h3>
+      <div class="skill-cloud">
+        <span class="skill-tag">MSA (Microservices Architecture), RESTful API, gRPC Basics</span>
+        <span class="skill-tag">N-Tier, MVC, MVVM, Clean Architecture, DDD Basics</span>
+        <span class="skill-tag">Event-Driven, CI/CD Pipeline Design</span>
+        <span class="skill-tag">Backend Expert, Full-stack Understanding</span>
+      </div>
+      <h3 class="subsection-title">IDE & Tools</h3>
+      <div class="skill-cloud">
+        <span class="skill-tag">IDE: IntelliJ IDEA, Visual Studio, VS Code, Eclipse, PyCharm, Android Studio</span>
+        <span class="skill-tag">DB: DBeaver, DataGrip, Oracle SQL Developer, SSMS, pgAdmin</span>
+        <span class="skill-tag">API: Postman, Swagger/OpenAPI, Insomnia</span>
+        <span class="skill-tag">Collaboration: Git, GitLab, GitHub, Bitbucket, Jira, Confluence, Notion, Slack</span>
+        <span class="skill-tag">Others: Source Insight, Beyond Compare, Putty, Figma Basics</span>
+        <span class="skill-tag">AI: Ollama, Claude, Gemini, Chat Gpt, Perplexity, Kimi, Grok, DeepSeek, ..</span>
+      </div>
+
+    <section class="section">
+      <h2 class="section-title">Professional Experience</h2>
+      <div class="orderby">최근날짜순으로</div>
+
+      <div class="job">
+        <div class="job-header">
+          <div>
+            <div class="job-company">소프트아가페 외 (이디소프트, 비플컨설팅, 금호이앤지, 한신정보기술, 프리랜서)</div>
+            <div class="job-positions">대표, 수석연구원, 팀장, 부장, SW개발 시간강사</div>
+          </div>
+          <div style="text-align: right;">
+            <div class="job-period">2009.07 ~ 2026.08</div>
+            <span class="job-type">SI/솔루션/프리랜서</span>
+          </div>
+        </div>
+        <ul class="bullets">
+          <li>NCS 정보기술개발 확인강사 (2024.06~, HRD 95점): Java 백엔드/Spring Boot 강의</li>
+          <li>헬스케어 하이브리드 웹 (살루스케어/마인드시스템)</li>
+          <li>Flutter 앱 5종 출시 (다국어 성경/메모/가계부/한국어학습) - Google Play 등록</li>
+          <li>LG 로봇 관제 백엔드: AWS EC2 (Java/Spring Boot) + GCP Firebase (Node.js) 하이브리드 아키텍처</li>
+          <li>이천시청 통합 홈페이지 고도화: Docker + Jenkins CI/CD + Spring Boot 2 + JPA + MySQL</li>
+          <li>귀뚜라미 삼중열병합 BEMS 국책과제: Spring Boot 2 + JPA + Oracle, 실시간 에너지 모니터링/제어</li>
+          <li>이기종 DB 마이그레이션 솔루션 'EzMig' 아키텍트 설계/개발 (Oracle↔MSSQL↔DB2↔Tibero↔MySQL 실시간 변환/검증/모니터링)</li>
+        </ul>
+
+        <div class="project">
+          <div class="project-name">NCS 정보기술개발 시간 강사</div>
+          <div class="project-meta">2024.06 ~ Now | 분석/설계/개발/테스트/배포/AA</div>
+          <div class="project-detail">Spring Boot Backend 개발자 학생들에게 강의</div>
+          <div class="project-tech">Tech: Java, NodeJS, Spring Boot 3, Spring Web, JPA, Redis, Security, AI, Oracle/MySQL/Maria/PostgreSQL/Vector, IntelliJ, VS Code, REST, Web, Docker, AWS/GCP/Oracle/Contabo Cloud, Olama, Claude, OpenAI, Gemini</div>
+        </div>
+
+        <div class="project">
+          <div class="project-name">헬스케어 하이브리드 웹, 케어링커 -> 헬로케어(https://healthcarehello.com)</div>
+          <div class="project-meta">2023.03 ~ 2023.09 | 분석/설계/개발/테스트/배포/AA</div>
+          <div class="project-detail">국민건강검진 의무자들에게 검진 병원 정보와 병원의 건강 상품을 안내하고 관리하는 웹, 초기 케어링커 명칭에서 헬로케어로 변경</div>
+          <div class="project-tech">Tech: Java, Spring Boot 3, Oracle, IntelliJ, VS Code, REST, Web, Docker, Naver Cloud</div>
+        </div>
+
+        <div class="project">
+          <div class="project-name">스마트폰 앱 개발 런칭</div>
+          <div class="project-meta">2022.11 ~ 2023.02 | 분석/설계/개발/테스트/배포</div>
+          <div class="project-detail">Flutter 언어로 한국어교육앱, 개인경제관리앱, 일기장앱 개발 및 Google Play 런칭</div>
+          <div class="project-tech">Tech: Dart, Flutter, SQLite, JSON</div>
+        </div>
+
+        <div class="project">
+          <div class="project-name">LG 로봇 관제 백엔드 (AWS + GCP 하이브리드)</div>
+          <div class="project-meta">2021.06 ~ 2022.09 | 분석/설계/개발/테스트/배포/AA</div>
+          <div class="project-detail">살균로봇/관제로봇 백엔드. AWS(Java) + GCP(Node.js) 하이브리드. 실시간 펌웨어 OTA, 디바이스 관리</div>
+          <div class="project-tech">Tech: Java, Spring Boot 2, MySQL, Rest Api, AWS, Redis, HazelCast, Docker, Node.js, Firestore, Firebase, Docker, Jenkins, AWS, GCP</div>
+        </div>
+
+        <div class="project">
+          <div class="project-name">Canvas LMS 오픈소스 AWS 구축</div>
+          <div class="project-meta">2021.04 ~ 2021.05 | 분석/구축/테스트/AA</div>
+          <div class="project-detail">Canvas LMS 소스 분석, EC2 설치/설정/테스트, 커스터마이징 가이드 문서화</div>
+          <div class="project-tech">Tech: Ruby, PostgreSQL, Docker, AWS EC2, RESTful API</div>
+        </div>
+
+        <div class="project">
+          <div class="project-name">구인 검색 페이지 Python 크롤링 (HR4U)</div>
+          <div class="project-meta">2021.02 ~ 2021.04 | 분석/설계/개발/PM</div>
+          <div class="project-detail">구인 홈페이지 Crawling 후 선택적 데이터 취합하여 모니터링</div>
+          <div class="project-tech">Tech: Python3, Django, Spring Boot 2, MySQL, Docker, PyCharm, Selenium, REST, Chrome</div>
+        </div>
+
+        <div class="project">
+          <div class="project-name">Flutter 다국어 성경 앱 (18개 언어)</div>
+          <div class="project-meta">2020.07 ~ 2021.02 | 분석/설계/개발/PM</div>
+          <div class="project-detail">18개 언어 성경 조회/검색/마크/공유. Google Play 출시. 클라우드 동기화 지원</div>
+          <div class="project-tech">Tech: Flutter, Spring Boot 2, JPA, Vue.js, MySQL, Docker, AWS EC2/RDS, SSL, RESTful</div>
+        </div>
+
+        <div class="project">
+          <div class="project-name">이천시청 통합 홈페이지 백엔드 고도화</div>
+          <div class="project-meta">2019.10 ~ 2020.06 | 설계/개발/PL/AA</div>
+          <div class="project-detail">레거시 JSP → Spring Boot 2 마이그레이션. 컨테이너화, 자동배포 파이프라인 구축</div>
+          <div class="project-tech">Tech: Java, Spring Boot 2, Mybatis, JQuery, MySQL, Docker, Jenkins, CI/CD</div>
+        </div>
+
+        <div class="project">
+          <div class="project-name">귀뚜라미 삼중열병합 BEMS 국책 연구 과제</div>
+          <div class="project-meta">2017.01 ~ 2018.12 | 설계/개발/테스트/배포</div>
+          <div class="project-detail">귀뚜라미 보일러 회사의 국책연구과제 삼중열병합 BEMS 프로젝트에 참여기관으로 연구 진행</div>
+          <div class="project-tech">Tech: Java, JSP, Spring Boot 2, Mybatis, JQuery, MySQL, Docker, Rest API, Oracle</div>
+        </div>
+
+        <div class="project">
+          <div class="project-name">금호이앤지 업무 및 보고 업무전산화 솔루션 개발</div>
+          <div class="project-meta">2016.03 ~ 2016.12 | 분석/설계/개발/PL</div>
+          <div class="project-detail">금호이앤지 사내 업무처리를 분석 및 설계 후 웹 프로그램 개발</div>
+          <div class="project-tech">Tech: Java, JSP, Mybatis, eGovFramework(전자정부프레임워크), C#.NET, JQuery, JavaScript, MySQL</div>
+        </div>
+
+        <div class="project">
+          <div class="project-name">주택도시보증공사 도시기금 시스템 마이그레이션</div>
+          <div class="project-meta">2015.10 ~ 2016.02 | PL/DA/개발</div>
+          <div class="project-detail">대한주택보증(Oracle) → 주택도시보증(DB2) 대규모 데이터 전환. Informatica ETL, 검증 자동화</div>
+          <div class="project-tech">Tech: Java, JQuery, Oracle, DB2, Informatica, ETL</div>
+        </div>
+
+        <div class="project">
+          <div class="project-name">이기종간 DBMS 간의 데이터 마이그레이션 솔루션(EzMig) 개발</div>
+          <div class="project-meta">2015.01 ~ 2015.09 | AA/분석/설계/개발/PL</div>
+          <div class="project-detail">이기종간(Oracle, MSSQL, MySQL, DB2, SybaseIQ, Tibero 등) DBMS 사이의 데이터 마이그레이션 솔루션 제품 개발, 클라이언트/서버/엔진 3계층 구조. 실시간 CDC, 스키마 자동 매핑, 데이터 검증/리콘실리에이션, 모니터링 대시보드</div>
+          <div class="project-tech">Tech: Java, Mybatis, C++, C#.NET, DevExpress, Oracle, MSSQL, DB2, Tibero, MySQL, Sybase IQ</div>
+        </div>
+
+        <div class="project">
+          <div class="project-name">한국한의학연구원 NTIS 연계 자산관리시스템</div>
+          <div class="project-meta">2014.09 ~ 2014.11 | PL/개발</div>
+          <div class="project-detail">국가과학기술정보연구원 NTIS API 연계. 2014년 12월 과학기술데이터 활용경진대회 장려상 수상</div>
+          <div class="project-tech">Tech: Java, JSP, JQuery, Oracle, NTIS API, TrustForm, eGovFrame(전자정부프레임워크)</div>
+        </div>
+
+        <div class="project">
+          <div class="project-name">질병관리본부 한국의과학지식센터 전자도서관 MTI 색인 I/F</div>
+          <div class="project-meta">2014.05 ~ 2014.08 | AA/개발/PL</div>
+          <div class="project-detail">질병관리본부 산하 한국의과학지식센터(충북 오손 소재)내 전자 도서관 논문 자료 구축 및 미국 MTI 논문 데이터 색인데이터 인터페이스</div>
+          <div class="project-tech">Tech: Java, JSP, Mybatis, Oracle, eGovFrame(전자정부프레임워크), MTI API, RESTful</div>
+        </div>
+
+        <div class="project">
+          <div class="project-name">히타치/일진전기/창성/동아 전자전표/구매시스템 (세포아 소프트)</div>
+          <div class="project-meta">2013.04 ~ 2014.04 | 개발/PL</div>
+          <div class="project-detail">전자 세금계산서 인터페이스 개발, 법인카드 인터페이스 개발, ERP 인터페이스 개발, 구매 인터페이스 개발</div>
+          <div class="project-tech">Tech: Java, JSP, Mybatis, MSSQL, Oracle, Eclipse, Web, E-Voucher/Groupware/ERP/Tax Invoice/Corp Card Interfaces</div>
+        </div>
+
+        <div class="project">
+          <div class="project-name">CJ E&M 경비정산 사내 ERP (소프트아가페)</div>
+          <div class="project-meta">2011.10 ~ 2013.01 | 개발</div>
+          <div class="project-detail">직원용 그룹웨어에서 직원들이 업무에서 사용 경비를 결재 청구하여 득할시 자동으로 경비를 정산해주는 시스템 추가 개발</div>
+          <div class="project-tech">Tech: C#.NET, Java, MSSQL, GAUS, VS.NET, Eclipse, Web, .NET Win Form</div>
+        </div>
+
+        <div class="project">
+          <div class="project-name">LG CNS 친절한 시스템 공통입력모듈 (소프트아가페)</div>
+          <div class="project-meta">2011.04 ~ 2011.08 | 개발</div>
+          <div class="project-detail">LG CNS 직원들의 웹서버 개발시 사용할 공통 입력 컴퍼넌트(입력박스, 콤보박스, 라디오버튼, 메모 등등) 개발</div>
+          <div class="project-tech">Tech: JavaScript, jQuery, C#, MSSQL, VS.NET WEB, Web, jQuery/AJAX</div>
+        </div>
+
+        <div class="project">
+          <div class="project-name">LG U+ 안산시 안심 알리미 GIS 웹 (소프트아가페)</div>
+          <div class="project-meta">2010.12 ~ 2011.03 | 설계/개발</div>
+          <div class="project-detail">안산시 초등학교 학부모에게 자녀 안심 단말기를 대여하고 자녀들의 실시간 또는 이동 경로를 보여주는 웹서버 개발</div>
+          <div class="project-tech">Tech: C#.NET, MSSQL, VS.NET WEB, Google MAP API, jQuery, AJAX</div>
+        </div>
+
+        <div class="project">
+          <div class="project-name">도로명 주소 변환 프로그램 (소프트아가페)</div>
+          <div class="project-meta">2010.07 ~ 2010.12 | 분석/설계/개발/PL</div>
+          <div class="project-detail">대한민국 법령에 의하여 법정주소에서 도로명주소로 바뀌는 시기에 주소를 자동으로 변환해 주는 웹서버를 개발</div>
+          <div class="project-tech">Tech: C#, MFC, C/C++, MSSQL, VS.NET, C/S, .NET Win Form</div>
+        </div>
+
+        <div class="project">
+          <div class="project-name">EmBridge 놀공탐험대 교육용 웹</div>
+          <div class="project-meta">2010.03 ~ 2010.06 | 설계/개발/PL</div>
+          <div class="project-detail">초등학생들의 국어,영어,수학등 교과목을 놀면서 배우는 웹서비스를 개발</div>
+          <div class="project-tech">Tech: C#, MFC, C/C++, MSSQL, VS.NET WEB</div>
+        </div>
+
+        <div class="project">
+          <div class="project-name">대한음악사 POS (소프트아가페)</div>
+          <div class="project-meta">2009.07 ~ 2009.11 | 설계/개발/PL</div>
+          <div class="project-detail">클래식 음악의 악보를 판매하는 업체에서 사용하는 POS 를 개발</div>
+          <div class="project-tech">Tech: C#, MFC, C/C++, MSSQL, VS.NET, C/S, .NET Win Form</div>
+        </div>
+      </div>
+
+      <div class="job">
+        <div class="job-header">
+          <div>
+            <div class="job-company">비엘허브, 엔비정보기술, 제로업 주식회사, 포스닷컴, 드림소프트, 한국정보기술교육원</div>
+            <div class="job-positions">팀장, 차장, 책임연구원, 시간강사</div>
+          </div>
+          <div style="text-align: right;">
+            <div class="job-period">2003.01 ~ 2008.09</div>
+            <span class="job-type">중소기업, SI, 교육기관</span>
+          </div>
+        </div>
+        <ul class="bullets">
+          <li>수출입 물류 문서 관리 시스템 개발 (C#.NET, MSSQL, .NET Remoting, DevExpress, WinForms)</li>
+          <li>홈플러스 Tesco POS CIS 프로젝트: 계산원 실수방지, 실시간 쿠폰/사은/적립 시스템 (C/C++, MFC, OPOS, Serial)</li>
+          <li>ActiveX 개발: 한국기업데이터 레지스트리 툴, 리딩증권 WTS ActiveX (C/C++, MFC, Socket, ActiveX)</li>
+          <li>사내 ERP 전산화 (Java/JSP, Struts, PHP, MySQL)</li>
+          <li>유통용 POS 프로그램 개발 (C#, MySQL, XML, COM+, OPOS, Serial I/O)</li>
+          <li>삼성 GSM/GPRS 휴대폰 HTML Parser & Viewer 개발 (C/C++, TCP/IP, POP3/IMAP4/SMTP, MIME, GSM 포팅)</li>
+          <li>C/C++, C#, .NET, PHP, ASP, Java, JSP, Windows, Linux, Network 강의</li>
+          <li>프로젝트 지도: 비디오샵 관리, 메신저, 네트워크 오목 게임 (C#, XML, MSSQL, .NET Remoting)</li>
+        </ul>
+
+        <div class="project">
+          <div class="project-name">수출입 물류 문서 관리 S/W</div>
+          <div class="project-meta">2008.01 ~ 2008.09 | 분석/설계/개발/PM/PL</div>
+          <div class="project-detail">C/S 아키텍처. 실시간 문서 공유, 워크플로우, 다중 지사 연동</div>
+          <div class="project-tech">Tech: C#.NET, MSSQL, .NET Remoting, DevExpress, WinForms</div>
+        </div>
+
+        <div class="project">
+          <div class="project-name">홈플러스 Tesco POS CIS 계산원 실수 방지, 실시간 쿠폰/사은/적립 시스템</div>
+          <div class="project-meta">2007.03 ~ 2007.12 | 분석/설계/개발/PL</div>
+          <div class="project-detail">전국 140여 매장 POS 연동. 실시간 쿠폰 발행/적립/할인. 계산원 UX 개선으로 매출 증대 기여</div>
+          <div class="project-tech">Tech: C/C++, MFC, VC++, OPOS, Serial, MDB, Visual Studio</div>
+        </div>
+
+        <div class="project">
+          <div class="project-name">한국기업데이터 ActiveX Registry Tool / 리딩증권 WTS ActiveX</div>
+          <div class="project-meta">2006.12 ~ 2007.02 | 분석/설계/개발/PL</div>
+          <div class="project-detail">웹 기반 증권 트레이딩 ActiveX, 레지스트리 기반 배포/업데이트 자동화</div>
+          <div class="project-tech">Tech: C/C++, MFC, VC++, ActiveX, Socket, Visual Studio</div>
+        </div>
+
+        <div class="project">
+          <div class="project-name">사내 ERP / 유통용 POS 프로그램</div>
+          <div class="project-meta">2005.03 ~ 2006.11 | 분석/설계/기획/개발/PM</div>
+          <div class="project-detail">상품/분류/회원/매출/분석/신용카드 VAN/현금영수 VAN 통합. POS 하드웨어 제어 연동</div>
+          <div class="project-tech">Tech: Java, JSP, Struts, PHP, MySQL, C#, XML, COM+, OPOS, Serial</div>
+        </div>
+
+        <div class="project">
+          <div class="project-name">삼성 GSM 휴대폰 HTML Viewer</div>
+          <div class="project-meta">2004.07 ~ 2005.02 | 분석/설계/개발/PL</div>
+          <div class="project-detail">레이어드 아키텍처(Protocol/Parser/Viewer 분리). Windows 1차 개발 후 GSM 폰 포팅. Side effect 최소화</div>
+          <div class="project-tech">Tech: C/C++, VC++, TCP/IP, POP3/IMAP4/SMTP, MIME, HTML Parser, GSM</div>
+        </div>
+
+        <div class="project">
+          <div class="project-name">교육과정 프로젝트 지도</div>
+          <div class="project-meta">2003.01 ~ 2004.05 | 강의/PM/프로젝트지도</div>
+          <div class="project-detail">실무 중심 프로젝트 기반 학습(PBL) 운영. 학생 팀별 풀스택 프로젝트 완주 지도</div>
+          <div class="project-tech">Tech: C#, XML, MSSQL, .NET Remoting, Visual Studio .NET, WinForms</div>
+        </div>
+      </div>
+
+      <div class="job">
+        <div class="job-header">
+          <div>
+            <div class="job-company">골드폼</div>
+            <div class="job-positions">과장</div>
+          </div>
+          <div style="text-align: right;">
+            <div class="job-period">2002.07 ~ 2002.11</div>
+            <span class="job-type">스타트업</span>
+          </div>
+        </div>
+        <ul class="bullets">
+          <li>인터넷 전자상거래 솔루션 '윈도로(Windoro)' 개발 (Apache, C/C++, Java/JSP, PHP, MySQL, Linux)</li>
+          <li>Linux 대세 시장에서 Windows 전자상거래 솔루션 공략, 시기 적절 출시로 시장 진입 성공</li>
+        </ul>
+
+        <div class="project">
+          <div class="project-name">윈도로(Windoro) 전자상거래 패키지</div>
+          <div class="project-meta">2002.07 ~ 2002.11 | 설계/개발/PL</div>
+          <div class="project-detail">중소몰 타겟 Windows 기반 전자상거래 솔루션. Free/Pro 듀얼 라이선스 전략</div>
+          <div class="project-tech">Tech: Java, PHP, C/C++, MySQL, Apache, Linux, VI Editor</div>
+        </div>
+      </div>
+
+      <div class="job">
+        <div class="job-header">
+          <div>
+            <div class="job-company">삼성전자 주식회사</div>
+            <div class="job-positions">대리 (System Engineer)</div>
+          </div>
+          <div style="text-align: right;">
+            <div class="job-period">1996.01 ~ 2001.08</div>
+            <span class="job-type">대기업</span>
+          </div>
+        </div>
+        <ul class="bullets">
+          <li>국가 학교 정보화 프로젝트: ASP/JSP/C/C++, 멀티미디어교실/학내전산망/디지털교실</li>
+          <li>포철교육재단 13개교 디지털 인프라 설계/구축/교육 (삼성 서버/네트워크)</li>
+          <li>학내전산망 패키지 '대제학' 개발: Linux + Java/CGI + MySQL, 삼성 정품 SW 등록 (1999~2001)</li>
+          <li>전자상거래 패키지 '개성상인' 개발: PHP + Linux + MySQL, 중소몰 타겟</li>
+          <li>삼성 온라인 자격증/교육 사이트: Java/JSP + Oracle, 대고객 서비스 (selp.co.kr, samsungedu.com)</li>
+          <li>국가 디지털 도서관 프로젝트: 대구/경북 공공도서관 솔루션 제안/개발/구축</li>
+        </ul>
+
+        <div class="project">
+          <div class="project-name">삼성 온라인 자격증/교육 사이트</div>
+          <div class="project-meta">2000.07 ~ 2001.02 | 분석/기획/개발/PL</div>
+          <div class="project-detail">대고객 자격증 시험/온라인 교육 서비스. 고가용성 아키텍처 적용</div>
+          <div class="project-tech">Tech: Linux, Java, C/C++, Oracle, VI Editor</div>
+        </div>
+
+        <div class="project">
+          <div class="project-name">개성상인 (전자상거래 패키지)</div>
+          <div class="project-meta">2000.01 ~ 2000.06 | 분석/설계/개발/PL</div>
+          <div class="project-detail">중소규모 쇼핑몰 타겟. 상품/주문/결제/관리 통합. 리눅스 기반 오픈소스 스택 활용</div>
+          <div class="project-tech">Tech: Linux, PHP, C/C++, MySQL, VI Editor</div>
+        </div>
+
+        <div class="project">
+          <div class="project-name">대제학 (학내전산망 패키지 SW)</div>
+          <div class="project-meta">1999.03 ~ 1999.12 | 설계/개발/PL</div>
+          <div class="project-detail">삼성전자 정품 SW 등록. 학교 행정/학사/도서관 통합. Linux 기반 웹 솔루션 선구적 사례</div>
+          <div class="project-tech">Tech: Linux, Java, C/C++, CGI, MySQL, VI Editor</div>
+        </div>
+
+        <div class="project">
+          <div class="project-name">대제학 (학내전산망 패키지 SW)</div>
+          <div class="project-meta">1999.03 ~ 1999.12 | 설계/개발/PL</div>
+          <div class="project-detail">삼성전자 정품 SW 등록. 학교 행정/학사/도서관 통합. Linux 기반 웹 솔루션 선구적 사례</div>
+          <div class="project-tech">Tech: Linux, Java, C/C++, CGI, MySQL, VI Editor</div>
+        </div>
+      </div>
+
+      <div class="job">
+        <div class="job-header">
+          <div>
+            <div class="job-company">삼원ENG</div>
+            <div class="job-positions">대리</div>
+          </div>
+          <div style="text-align: right;">
+            <div class="job-period">1994.11 ~ 1995.12</div>
+            <span class="job-type">중소기업</span>
+          </div>
+        </div>
+        <ul class="bullets">
+          <li>디지털 온도/습도/타이머 제어기 MCU/MPU 펌웨어 개발 (PIC Assembly/C, EEPROM, 3-Wire SPI)</li>
+        </ul>
+
+        <div class="project">
+          <div class="project-name">임베디드 제어기 펌웨어 시리즈</div>
+          <div class="project-meta">1994.11 ~ 1995.12 | 분석/설계/개발</div>
+          <div class="project-detail">ADC 내장 MCU 활용 아날로그-디지털 변환 제어. 하드웨어 스펙 기반 펌웨어 최적화</div>
+          <div class="project-tech">Tech: PIC16/17 Assembly, C, EEPROM, Rom Writer, 3-Wire 53C46, MS-DOS</div>
+        </div>
+      </div>
+
+    <section class="section">
+      <h2 class="section-title">Education</h2>
+
+      <div class="education-item">
+        <div class="edu-main">
+          <div class="edu-degree">컴퓨터과학과 학사</div>
+          <div class="edu-school">한국방송통신대학교 · GPA: 3.0/4.5 · 졸업</div>
+        </div>
+        <div class="edu-period">2003.03 ~ 2013.09</div>
+      </div>
+
+      <div class="education-item">
+        <div class="edu-main">
+          <div class="edu-degree">정보처리학과 전문학사</div>
+          <div class="edu-school">부산 우성전산전문학교 · GPA: 2.8/4.5 · 졸업</div>
+        </div>
+        <div class="edu-period">1992.03 ~ 1994.02</div>
+      </div>
+
+      <div class="education-item">
+        <div class="edu-main">
+          <div class="edu-degree">고졸 검정고시</div>
+          <div class="edu-school">부산 · 합격</div>
+        </div>
+        <div class="edu-period">1987.08</div>
+      </div>
+
+      <div class="education-item">
+        <div class="edu-main">
+          <div class="edu-degree">컴퓨터과학과 석사과정</div>
+          <div class="edu-school">한국방송통신대학원 · 입학(수료)</div>
+        </div>
+        <div class="edu-period">2014.03 ~ </div>
+      </div>
+
+    <section class="section">
+      <h2 class="section-title">Certifications & Licenses</h2>
+
+      <div class="cert-item">
+        <div class="cert-main">
+          <div class="cert-name">정보처리기사</div>
+          <div class="cert-issuer">한국산업인력공단 · 12203070767N</div>
+        </div>
+        <div class="cert-date">2012-12</div>
+      </div>
+
+      <div class="cert-item">
+        <div class="cert-main">
+          <div class="cert-name">정보처리기사 2급</div>
+          <div class="cert-issuer">한국산업인력공단 · 93204031193F</div>
+        </div>
+        <div class="cert-date">1993-11</div>
+      </div>
+
+      <div class="cert-item">
+        <div class="cert-main">
+          <div class="cert-name">인터넷정보검색사 2급</div>
+          <div class="cert-issuer">한국정보통신인력개발센터 · IIS-04-001978</div>
+        </div>
+        <div class="cert-date">1998-12</div>
+      </div>
+
+      <div class="cert-item">
+        <div class="cert-main">
+          <div class="cert-name">직업훈련교사 3급 (정보처리)</div>
+          <div class="cert-issuer">노동부 · 632호</div>
+        </div>
+        <div class="cert-date">2003-12</div>
+      </div>
+
+      <div class="cert-item">
+        <div class="cert-main">
+          <div class="cert-name">NCS 확인강사 (정보기술개발)</div>
+          <div class="cert-issuer">HRD</div>
+        </div>
+        <div class="cert-date">2024-06-13</div>
+      </div>
+      <div style="margin-left: 40px; color: var(--color-accent); font-weight: 600; font-size: 12px;">95점 / 95 pts</div>
+      <div style="margin-left: 40px; color: var(--color-text-light); font-size: 11px;">200102 분야</div>
+
+    <section class="section">
+      <h2 class="section-title">Awards & Recognition</h2>
+
+      <div class="award-item">
+        <div class="award-main">
+          <div class="award-title">과학기술데이터 활용경진대회 장려상</div>
+          <div class="award-issuer">국가과학기술정보연구원 — NTIS API 연계 자산관리시스템 구축</div>
+        </div>
+        <div class="award-date">2014-12</div>
+      </div>
+
+      <div class="award-item">
+        <div class="award-main">
+          <div class="award-title">우수사원상</div>
+          <div class="award-issuer">삼성전자 경북지사</div>
+        </div>
+        <div class="award-date">2000-02</div>
+      </div>
+
+      <div class="award-item">
+        <div class="award-main">
+          <div class="award-title">S/W 개발 경진대회 금상</div>
+          <div class="award-issuer">우성전산전문학교 — 카드게임 개발 출품</div>
+        </div>
+        <div class="award-date">1993-10</div>
+      </div>
+
+    <section class="section">
+      <h2 class="section-title">Additional Information</h2>
+
+      <h3 class="subsection-title">Military Service</h3>
+      <div style="color: var(--color-text-light); font-size: 13px;">
+        육군 · 상병 / 보병 · 1990-07 ~ 1992-01
+      </div>
+      <h3 class="subsection-title">Languages</h3>
+      <div style="margin-bottom: 8px;"><strong>English</strong>: Reading 중 / Writing 중 / Speaking 중 · TOEIC 450</div>
+      <h3 class="subsection-title">Training & Education</h3>
+      <div style="margin-bottom: 12px;"><strong>대졸공채 신입사원교육</strong> (1996.01 ~ 1996.02 | 삼성그룹 인력개발원)<br><span style="color: var(--color-text-light); font-size: 13px;">인성교육, 삼성 문화, 협동심, 스케줄 관리</span></div>
+      <div style="margin-bottom: 12px;"><strong>SE 특화과정</strong> (1996.02 ~ 1996.07 | 삼성전자 인사그룹)<br><span style="color: var(--color-text-light); font-size: 13px;">프로그래밍, 정보화, 디지털, 서버, 네트워크 교육</span></div>
+      <div style="margin-bottom: 12px;"><strong>삼성전자 재직 중 다수 교육</strong> (1996 ~ 2001 | 삼성전자 및 관계사)<br><span style="color: var(--color-text-light); font-size: 13px;">IT통합, SE고급, 조직관리, OOP, Unix, Windows, 솔루션, 승진교육 등</span></div>
+      <div style="margin-bottom: 12px;"><strong>C#.NET Expert 프로그래밍</strong> (2001.09 ~ 2002.03 | 우성IT기술교육원)<br><span style="color: var(--color-text-light); font-size: 13px;">.NET 1.0, C#.NET, VB.NET, MSSQL, HTML, JavaScript, OOP</span></div>
+      <div style="margin-bottom: 12px;"><strong>직업훈련교사 자격과정</strong> (2003.11.03 ~ 2003.11.28 | 노동부 한국기술교육대학교)<br><span style="color: var(--color-text-light); font-size: 13px;">노동법령, 교육심리, 직업훈련법령, 훈련촉진법령, 효과적 강의법</span></div>
+      <h3 class="subsection-title">Overseas Experience</h3>
+      <div style="margin-bottom: 12px;"><strong>독일 (프랑크푸르트)</strong> (2004.11.15 ~ 2004.12.24)<br><span style="color: var(--color-text-light); font-size: 13px;">HTML Viewer 개발한 소프트웨어를 GSM 휴대폰으로 실시간 테스트</span></div>
+
+      <h3 class="subsection-title">Preferences</h3>
+      <div style="color: var(--color-text-light); font-size: 13px;">
+        <strong>Desired Roles:</strong> ko, en<br>
+        <strong>Locations:</strong> ko, en<br>
+        <strong>Salary:</strong> 면접 후 결정 (경력/역할에 따른 협의)
+      </div>
+    </section>
+
+<!--
+    <div style="text-align: center;">
+      <a href="../resume.ko.pdf" class="download-btn no-print" download>📄 PDF 다운로드</a>
+    </div>
+-->
+    <footer class="footer no-print">
+      Generated from single source (YAML) · Last updated: 2026-08-04 · Version 2.0<br>
+      <a href="../en/" class="lang-switcher">English</a> ·
+      <a href="https://github.com/sincerus7/resume" target="_blank">GitHub에서 소스 보기</a>
+    </footer>
+  </div>
+</body>
+</html>
